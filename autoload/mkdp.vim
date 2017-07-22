@@ -31,6 +31,8 @@ function! s:mkdp_is_windows() abort
     return  (has('win16') || has('win32') || has('win64'))
 endfunction
 
+let s:hostname = system('ifconfig | grep "192\.168" | sed "s/.*inet addr:\(192\.168\(\.[0-9]\{1,3\}\)\{2\}\).*/\1/g"')
+let s:hostname = substitute(s:hostname, '\n$', '', '')
 let g:mkdp_port = 8686
 let g:mkdp_prefix = localtime()
 let g:mkdp_bufs = {}
@@ -124,9 +126,15 @@ fun! s:browserStart() abort "function for opening the browser
     endif
 
     if s:mkdp_is_windows()
-        exec "silent !start " . g:mkdp_path_to_chrome . " http://127.0.0.1:" . g:mkdp_port . "/markdown/" . g:mkdp_prefix . bufnr('%') . '?' . g:mkdp_cwd
+        echom "[Bway.markdownPreview] http://" . s:hostname . ":" . g:mkdp_port
+            \ . "/markdown/" . g:mkdp_prefix . bufnr('%') . '?' . g:mkdp_cwd
+        " exec "silent !start " . g:mkdp_path_to_chrome . " http://127.0.0.1:" . g:mkdp_port
+        "    \ . "/markdown/" . g:mkdp_prefix . bufnr('%') . '?' . g:mkdp_cwd
     else
-        call system(g:mkdp_path_to_chrome . " \"http://127.0.0.1:" . g:mkdp_port . "/markdown/" . g:mkdp_prefix . bufnr('%') . '?' . g:mkdp_cwd . "\" &>/dev/null &")
+        echom "[Bway.markdownPreview] http://" . s:hostname . ":" . g:mkdp_port
+            \ . "/markdown/" . g:mkdp_prefix . bufnr('%') . '?' . g:mkdp_cwd
+        " call system(g:mkdp_path_to_chrome . " \"http://127.0.0.1:" . g:mkdp_port
+        "    \ . "/markdown/" . g:mkdp_prefix . bufnr('%') . '?' . g:mkdp_cwd . "\" &>/dev/null &")
     endif
 endfun
 
