@@ -268,7 +268,7 @@ class WebSocket():
 def main():
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
-        server.bind((u'127.0.0.1', port))
+        server.bind((u'0.0.0.0', port))
         server.listen(100)
     except Exception as e:
         exit(0)
