@@ -126,12 +126,14 @@ fun! s:browserStart() abort "function for opening the browser
     endif
 
     if s:mkdp_is_windows()
-        echom "[Bway.markdownPreview] http://" . s:hostname . ":" . g:mkdp_port
+        echom "[Bway.markdownPreview] http://" . s:hostname . ":" . g:mkdp_port . "/markdown/" . g:mkdp_prefix
+        echom "[Bway.mkdp] http://" . s:hostname . ":" . g:mkdp_port
             \ . "/markdown/" . g:mkdp_prefix . bufnr('%') . '?' . g:mkdp_cwd
         " exec "silent !start " . g:mkdp_path_to_chrome . " http://127.0.0.1:" . g:mkdp_port
         "    \ . "/markdown/" . g:mkdp_prefix . bufnr('%') . '?' . g:mkdp_cwd
     else
-        echom "[Bway.markdownPreview] http://" . s:hostname . ":" . g:mkdp_port
+        echom "[Bway.markdownPreview] http://" . s:hostname . ":" . g:mkdp_port . "/markdown/" . g:mkdp_prefix . bufnr('%')
+        echom "[Bway.mkdp] http://" . s:hostname . ":" . g:mkdp_port
             \ . "/markdown/" . g:mkdp_prefix . bufnr('%') . '?' . g:mkdp_cwd
         " call system(g:mkdp_path_to_chrome . " \"http://127.0.0.1:" . g:mkdp_port
         "    \ . "/markdown/" . g:mkdp_prefix . bufnr('%') . '?' . g:mkdp_cwd . "\" &>/dev/null &")
