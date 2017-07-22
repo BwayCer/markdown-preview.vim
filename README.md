@@ -1,3 +1,20 @@
+## 關於分叉
+
+
+這是一個好用的 Vim 插件， 但是筆者無法使用！（此段落的筆者皆非原作者）<br>
+為甚麼呢？<br>
+因為筆者在視窗筆電上架設烏班圖作為開發環境，
+這「多此一舉」的行為讓我與本插件無緣了 ...
+
+誰說的！ 筆者將於本分叉進行以下更改：
+
+  * [x] 關閉自動開啟瀏覽器， 改以提示網址訊息。
+  * [ ] 同一網址重複使用。
+
+---
+
+
+
 ## Introduction
 
 [![Join the chat at https://gitter.im/iamcco/markdown-preview.vim](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/iamcco/markdown-preview.vim?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
