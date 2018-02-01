@@ -31,7 +31,7 @@ function! s:mkdp_is_windows() abort
     return  (has('win16') || has('win32') || has('win64'))
 endfunction
 
-let s:hostname = system('ifconfig | grep "192\.168" | sed "s/.*inet addr:\(192\.168\(\.[0-9]\{1,3\}\)\{2\}\).*/\1/g"')
+let s:hostname = system('echo `hostname -i`')
 let s:hostname = substitute(s:hostname, '\n$', '', '')
 let g:mkdp_port = 8686
 let g:mkdp_prefix = localtime()
